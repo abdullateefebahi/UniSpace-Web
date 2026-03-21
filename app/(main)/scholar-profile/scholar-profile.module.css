@@ -440,3 +440,34 @@
   display: flex;
   padding: 0.25rem;
 }
+
+/* ===== Mobile Layout ===== */
+@media (max-width: 768px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+  .profileRow {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .avatarLarge {
+    margin: 0 auto;
+  }
+  .profileMeta {
+    justify-content: center;
+  }
+  .profileActions {
+    justify-content: center;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .followBtn, .messageBtn {
+    flex: 1;
+  }
+  .portfolioHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

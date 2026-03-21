@@ -33,6 +33,53 @@
   font-size: 0.95rem;
 }
 
+/* Feed Tabs */
+.feedTabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  margin-top: 0.5rem;
+}
+
+[data-theme='dark'] .feedTabs {
+  background: var(--bg-surface);
+}
+
+.feedTab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.15rem 0;
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.feedTab:hover {
+  background: var(--bg-primary);
+}
+
+.activeTab {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  width: 56px;
+  background: var(--teal);
+  border-radius: 4px 4px 0 0;
+}
+
 /* Composer */
 .composer {
   background: var(--bg-surface);
@@ -379,4 +426,22 @@
 
 .openLibBtn:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Mobile Layout ===== */
+@media (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .rightSidebar {
+    display: none;
+  }
+  
+  .postActions {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
 }

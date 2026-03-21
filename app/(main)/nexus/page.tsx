@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import styles from './nexus.module.css';
 import {
   Link as LinkIcon,
@@ -56,6 +57,8 @@ const SCHOLARS = [
 ];
 
 export default function NexusPage() {
+  const [activeTab, setActiveTab] = useState<'foryou' | 'following'>('foryou');
+
   return (
     <div className={styles.page}>
       <div className={styles.feed}>
@@ -64,6 +67,24 @@ export default function NexusPage() {
           <p className={styles.pageSubtitle}>
             Explore the latest insights and breakthroughs from across your network.
           </p>
+        </div>
+
+        {/* X-style Navigation Tabs */}
+        <div className={styles.feedTabs}>
+          <button 
+            className={`${styles.feedTab} ${activeTab === 'foryou' ? styles.activeTab : ''}`}
+            onClick={() => setActiveTab('foryou')}
+          >
+            <span>For you</span>
+            {activeTab === 'foryou' && <div className={styles.activeIndicator} />}
+          </button>
+          <button 
+            className={`${styles.feedTab} ${activeTab === 'following' ? styles.activeTab : ''}`}
+            onClick={() => setActiveTab('following')}
+          >
+            <span>Following</span>
+            {activeTab === 'following' && <div className={styles.activeIndicator} />}
+          </button>
         </div>
 
         {/* Composer */}

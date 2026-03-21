@@ -209,3 +209,25 @@
 .card:hover .arrowIcon {
   transform: translateX(3px);
 }
+
+/* ===== Mobile Layout ===== */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .headerActions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .searchBar {
+    width: 100%;
+  }
+  .pageTitle {
+    font-size: 1.4rem;
+  }
+}
