@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import styles from './main-layout.module.css';
 import {
   Sparkles,
@@ -13,13 +13,16 @@ import {
   User,
   Search,
   Plus,
+  Microscope,
+  Settings,
+  ArrowLeft,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
   { href: '/nexus', label: 'The Nexus', icon: Sparkles },
   { href: '/discovery', label: 'Space Discovery', icon: Compass },
   { href: '/joined-spaces', label: 'Joined Spaces', icon: Users },
-  { href: '/recent-research', label: 'Recent Research', icon: Clock },
+  { href: '/recent-research', label: 'Research', icon: Microscope },
 ];
 
 export default function MainLayout({
@@ -28,6 +31,7 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
@@ -57,16 +61,10 @@ export default function MainLayout({
       {/* Sidebar */}
       <aside className={styles.sidebar}>
         <div className={styles.sidebarTop}>
-          {/* Profile */}
-          <div className={styles.profile}>
-            <div className={styles.avatar}>
-              <User size={20} />
-            </div>
-            <div>
-              <div className={styles.profileName}>Academic Profile</div>
-              <div className={styles.profileRole}>Digital Curator</div>
-            </div>
-          </div>
+          {/* Brand */}
+          <Link href="/discovery" className={styles.brandSidenav}>
+            <em>Unispace</em>
+          </Link>
 
           {/* Navigation */}
           <nav className={styles.nav}>
@@ -85,42 +83,50 @@ export default function MainLayout({
           </nav>
         </div>
 
-        {/* New Research Button */}
-        <button className={styles.newResearchBtn}>
-          <Plus size={18} />
-          <span>New Research</span>
-        </button>
+        {/* Bottom Section */}
+        <div className={styles.sidebarBottom}>
+          <Link href="/scholar-profile" className={styles.profileBtn}>
+            <div className={styles.avatar}>
+              <User size={20} />
+            </div>
+            <div>
+              <div className={styles.profileName}>Academic Profile</div>
+              <div className={styles.profileRole}>Digital Curator</div>
+            </div>
+          </Link>
+
+          <button className={styles.settingsBtn}>
+            <Settings size={18} />
+            <span>Settings</span>
+          </button>
+        </div>
       </aside>
 
       {/* Main Content Area */}
       <div className={styles.mainArea}>
         {/* Top Header */}
-        <header className={styles.header}>
-          <Link href="/discovery" className={styles.brand}>
-            <em>Unispace</em>
-          </Link>
+        {pathname === '/nexus' && (
+          <header className={styles.header}>
+            <div className={styles.searchBar}>
+              <Search size={16} className={styles.searchIcon} />
+              <input
+                type="text"
+                placeholder="Search the Nexus..."
+                className={styles.searchInput}
+              />
+            </div>
+          </header>
+        )}
 
-          <div className={styles.searchBar}>
-            <Search size={16} className={styles.searchIcon} />
-            <input
-              type="text"
-              placeholder="Search the Nexus..."
-              className={styles.searchInput}
-            />
-          </div>
-
-          <div className={styles.headerRight}>
-            <button className={styles.iconBtn} aria-label="Notifications">
-              <Bell size={20} />
-            </button>
-            <button className={styles.iconBtn} aria-label="Profile">
-              <User size={20} />
-            </button>
-            <button className={styles.toggleBtn} onClick={toggleTheme}>
-              {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+        {/* Global Back Header for nested pages */}
+        {!['/nexus', '/discovery', '/joined-spaces', '/recent-research', '/scholar-profile'].includes(pathname) && (
+          <div className={styles.backHeader}>
+            <button onClick={() => router.back()} className={styles.backBtn}>
+              <ArrowLeft size={18} />
+              <span>Back</span>
             </button>
           </div>
-        </header>
+        )}
 
         {/* Page Content */}
         <main className={styles.content}>{children}</main>

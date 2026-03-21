@@ -59,6 +59,13 @@ export default function NexusPage() {
   return (
     <div className={styles.page}>
       <div className={styles.feed}>
+        <div className={styles.pageHeader}>
+          <h1 className={styles.pageTitle}>The Nexus</h1>
+          <p className={styles.pageSubtitle}>
+            Explore the latest insights and breakthroughs from across your network.
+          </p>
+        </div>
+
         {/* Composer */}
         <div className={styles.composer}>
           <div className={styles.composerRow}>

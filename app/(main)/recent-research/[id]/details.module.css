@@ -1,0 +1,488 @@
+/* ===== Joined Spaces Page ===== */
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== Main Content ===== */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Space Header */
+.spaceHeader {
+  margin-bottom: 0.5rem;
+}
+
+.spaceBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.spaceTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-top: 0.5rem;
+  color: var(--text-primary);
+}
+
+.spaceCode {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.curators {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.curatorStack {
+  display: flex;
+  align-items: center;
+}
+
+.curatorAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--bg-surface);
+  margin-left: -8px;
+}
+
+.curatorAvatar:first-child {
+  margin-left: 0;
+}
+
+.curatorMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #FFFFFF;
+  font-size: 0.55rem;
+  font-weight: 700;
+  margin-left: -8px;
+}
+
+.curatorText {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Canvas + Resources */
+.workArea {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 1rem;
+}
+
+.canvas {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.canvasHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.canvasTitle {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.canvasExpand {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.canvasDesc {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.canvasPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-sm);
+}
+
+/* Resources */
+.resources {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resourcesTitle {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: 0.04em;
+}
+
+.resourceCard {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+}
+
+.resourceType {
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.resourceCard strong {
+  font-size: 0.8rem;
+}
+
+.resourceMeta {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.uploadBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.uploadBtn:hover {
+  border-color: var(--navy);
+}
+
+/* Document */
+.document {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.docHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.docIcon {
+  font-size: 1.1rem;
+}
+
+.docTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.collabDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  margin-left: auto;
+}
+
+.collabText {
+  font-size: 0.7rem;
+  color: #10B981;
+  font-weight: 500;
+}
+
+.docBody h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.docBody p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.highlight {
+  background: rgba(99, 102, 241, 0.15);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+}
+
+/* Lab Footer */
+.labFooter {
+  padding: 1rem 0;
+}
+
+.labLabel {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.labItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 0.375rem;
+}
+
+.labDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* ===== Right Sidebar ===== */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.widget {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.widgetTitle {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  margin-bottom: 0.875rem;
+}
+
+.widgetHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.viewAllLink {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+/* Sub-spaces */
+.subSpaceItem {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.subSpaceItem:last-child {
+  border-bottom: none;
+}
+
+.subSpaceDot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-sm);
+}
+
+.chevron {
+  margin-left: auto;
+  color: var(--text-muted);
+}
+
+/* Discussions */
+.discussionItem {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.discussionItem:last-child {
+  border-bottom: none;
+}
+
+.discussionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 0.375rem;
+}
+
+.discussionAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #FFFFFF;
+  font-size: 0.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.discussionHeader strong {
+  font-size: 0.775rem;
+}
+
+.discussionTime {
+  margin-left: auto;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.discussionText {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 0.375rem;
+}
+
+.discussionActions {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.discussionActions span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.threadInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.threadInputField {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.775rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.threadInputField:focus {
+  border-color: var(--navy);
+}
+
+.threadSendBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--teal);
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+/* Health Widget */
+.healthWidget {
+  background: var(--teal);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  color: #FFFFFF;
+}
+
+.healthTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.healthStats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.healthStats > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.healthValue {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.healthLabel {
+  font-size: 0.55rem;
+  font-weight: 600;
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+}

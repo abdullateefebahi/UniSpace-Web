@@ -1,160 +1,131 @@
-import styles from './recent-research.module.css';
+import Link from 'next/link';
+import styles from './research-list.module.css';
 import {
-  Globe,
-  AtSign,
-  Rss,
-  FileText,
-  ChevronRight,
+  Users,
+  Activity,
+  FolderOpen,
+  ArrowRight,
+  Shield,
   Star,
-  ExternalLink,
+  Search,
+  Plus
 } from 'lucide-react';
 
-const ACTIVE_SPACES = [
-  { initials: 'CE', name: 'Computational Ethics', role: 'Admin', members: '4.2k members', color: '#6366F1' },
-  { initials: 'ML', name: 'Meta-Learning Lab', role: 'Member', members: '1.1k members', color: '#0D9488' },
-  { initials: 'DS', name: 'Data Sovereignty', role: 'Member', members: '890 members', color: '#F59E0B' },
+const JOINED_RESEARCH = [
+  {
+    id: 'L-04',
+    title: 'Advanced Neural Interfacing & Synaptic Ethics',
+    spaceCode: 'L-04',
+    role: 'Lead Curator',
+    members: 24,
+    status: 'Active',
+    lastActive: '12m ago',
+    color: '#6366F1', // Indigo
+    tags: ['Neuroscience', 'Ethics']
+  },
+  {
+    id: 'L-12',
+    title: 'Climate Impact Data Modeling',
+    spaceCode: 'L-12',
+    role: 'Analyst',
+    members: 142,
+    status: 'Active',
+    lastActive: '2h ago',
+    color: '#10B981', // Emerald
+    tags: ['Environment', 'Big Data']
+  },
+  {
+    id: 'Q-99',
+    title: 'Quantum Key Distribution Frameworks',
+    spaceCode: 'Q-99',
+    role: 'Observer',
+    members: 8,
+    status: 'Archived',
+    lastActive: '3w ago',
+    color: '#F59E0B', // Amber
+    tags: ['Cryptography', 'Physics']
+  },
+  {
+    id: 'S-01',
+    title: 'Socio-Economic AI Bias Simulator',
+    spaceCode: 'S-01',
+    role: 'Contributor',
+    members: 56,
+    status: 'Active',
+    lastActive: '1d ago',
+    color: '#EC4899', // Pink
+    tags: ['AI Safety', 'Sociology']
+  }
 ];
 
-export default function RecentResearchPage() {
+export default function ResearchListPage() {
   return (
     <div className={styles.page}>
-      {/* Cover + Profile Header */}
-      <div className={styles.coverArea}>
-        <div className={styles.cover} />
-        <div className={styles.profileRow}>
-          <div className={styles.avatarLarge} />
-          <div className={styles.profileInfo}>
-            <h1 className={styles.profileName}>Dr. Julian Vane</h1>
-            <p className={styles.profileRole}>
-              Senior Curator of Computational Ethics
-            </p>
-            <div className={styles.profileMeta}>
-              <span>🏛 Stanford University</span>
-              <span>📍 Palo Alto, CA</span>
-              <span className={styles.verified}>✅ Verified Researcher</span>
-            </div>
-          </div>
-          <div className={styles.profileActions}>
-            <button className={styles.followBtn}>Follow</button>
-            <button className={styles.messageBtn}>Message</button>
-          </div>
-        </div>
-      </div>
-
-      {/* Bio + Research Portfolio */}
-      <div className={styles.twoCol}>
-        <div className={styles.bioCard}>
-          <h2 className={styles.cardTitle}>📖 Biography</h2>
-          <blockquote className={styles.bioQuote}>
-            &ldquo;My work focuses on the intersection of human-centric design
-            and automated governance. I believe that data curation is the new
-            librarianism — essential for preserving the integrity of our shared
-            digital consciousness.&rdquo;
-          </blockquote>
-          <div className={styles.bioLinks}>
-            <button className={styles.bioLinkBtn}><Globe size={16} /></button>
-            <button className={styles.bioLinkBtn}><AtSign size={16} /></button>
-            <button className={styles.bioLinkBtn}><Rss size={16} /></button>
-          </div>
-        </div>
-
-        <div className={styles.portfolioCard}>
-          <div className={styles.portfolioHeader}>
-            <h2 className={styles.cardTitle}>🎓 Research Portfolio</h2>
-            <div className={styles.portfolioStats}>
-              <span>Papers: <strong>14</strong></span>
-              <span>Citations: <strong>2.1k</strong></span>
-            </div>
-          </div>
-          <div className={styles.featuredPub}>
-            <span className={styles.featuredBadge}>FEATURED PUBLICATION</span>
-            <span className={styles.pubDate}>Oct 2023</span>
-            <h3 className={styles.pubTitle}>
-              The Algorithmic Commons: Redefining Public Spaces in the Age of AI
-            </h3>
-            <p className={styles.pubDesc}>
-              This paper explores how generative models are reshaping our
-              understanding of intellectual property and public discourse within
-              digital ecosystems...
-            </p>
-            <div className={styles.pubActions}>
-              <button className={styles.pdfBtn}>
-                <FileText size={14} /> PDF
-              </button>
-              <a href="#" className={styles.citationsLink}>
-                View Citations (412)
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Active Spaces + Datasets/Collab */}
-      <div className={styles.twoCol}>
+      <header className={styles.header}>
         <div>
-          <h2 className={styles.sectionTitle}>🌐 Active Spaces</h2>
-          <div className={styles.spacesList}>
-            {ACTIVE_SPACES.map((sp) => (
-              <div key={sp.name} className={styles.spaceItem}>
-                <div
-                  className={styles.spaceInitials}
-                  style={{ background: sp.color }}
-                >
-                  {sp.initials}
-                </div>
-                <div className={styles.spaceInfo}>
-                  <strong>{sp.name}</strong>
-                  <p>{sp.role} • {sp.members}</p>
-                </div>
-                <ChevronRight size={16} className={styles.chevron} />
-              </div>
-            ))}
-          </div>
+          <h1 className={styles.pageTitle}>Your Research Spaces</h1>
+          <p className={styles.pageDesc}>
+            Manage and access the collaborative laboratories you've joined.
+          </p>
         </div>
-
-        <div className={styles.rightCol}>
-          <div className={styles.datasetCard}>
-            <span className={styles.datasetBadge}>📊 DATASET</span>
-            <h3 className={styles.datasetTitle}>
-              Nexus-Open: Semantic Mesh v1.4
-            </h3>
-            <p className={styles.datasetMeta}>
-              12.4GB • JSONL • 1.2M entries
-            </p>
-            <div className={styles.datasetFooter}>
-              <span className={styles.datasetTag}>Social Graph</span>
-              <Star size={16} className={styles.starIcon} />
-            </div>
+        <div className={styles.headerActions}>
+          <div className={styles.searchBar}>
+            <Search size={16} className={styles.searchIcon} />
+            <input 
+              type="text" 
+              placeholder="Filter research..." 
+              className={styles.searchInput}
+            />
           </div>
-
-          <div className={styles.collabCard}>
-            <span className={styles.collabBadge}>⭐ COLLABORATION</span>
-            <h3 className={styles.collabTitle}>Open-Syllabus Initiative</h3>
-            <p className={styles.collabMeta}>Lead Contributor • Active Phase</p>
-            <div className={styles.collabAvatars}>
-              <div className={styles.miniAvatar} />
-              <div className={styles.miniAvatar} />
-              <div className={styles.miniAvatar} />
-              <span className={styles.collabMore}>+12</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Scholar Activity */}
-      <section className={styles.activitySection}>
-        <h2 className={styles.sectionTitle}>📝 Scholar Activity</h2>
-        <div className={styles.activityItem}>
-          <div className={styles.activityDot} />
-          <div>
-            <span className={styles.activityType}>POST</span>
-            <span className={styles.activityTime}> • 4h ago</span>
-          </div>
-          <button className={styles.activityMore}>
-            <ExternalLink size={14} />
+          <button className="btn-primary">
+            <Plus size={16} /> New Research
           </button>
         </div>
-      </section>
+      </header>
+
+      <div className={styles.grid}>
+        {JOINED_RESEARCH.map((research) => (
+          <Link href={`/recent-research/${research.id}`} key={research.id} className={styles.card}>
+            <div className={styles.cardHeader}>
+              <div 
+                className={styles.colorAccent} 
+                style={{ backgroundColor: research.color }}
+              />
+              <div className={styles.headerContent}>
+                <span className={styles.spaceCode}>{research.spaceCode}</span>
+                <span className={`${styles.statusBadge} ${research.status === 'Archived' ? styles.statusArchived : styles.statusActive}`}>
+                  {research.status === 'Active' && <Activity size={12} />}
+                  {research.status}
+                </span>
+              </div>
+            </div>
+            
+            <div className={styles.cardBody}>
+              <h3 className={styles.cardTitle}>{research.title}</h3>
+              <div className={styles.tags}>
+                {research.tags.map(tag => (
+                  <span key={tag} className={styles.tag}>{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.cardFooter}>
+              <div className={styles.metaInfo}>
+                <span className={styles.metaItem} title="Your Role">
+                  <Shield size={14} /> {research.role}
+                </span>
+                <span className={styles.metaItem} title="Members">
+                  <Users size={14} /> {research.members}
+                </span>
+              </div>
+              <div className={styles.footerAction}>
+                 <span className={styles.lastActive}>{research.lastActive}</span>
+                 <ArrowRight size={16} className={styles.arrowIcon} />
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

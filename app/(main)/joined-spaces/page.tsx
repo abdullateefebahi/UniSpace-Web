@@ -1,203 +1,229 @@
 import styles from './joined-spaces.module.css';
 import {
-  ChevronRight,
-  Expand,
-  Upload,
-  MessageSquare,
-  Bookmark,
-  Shield,
-  Activity,
+  Search,
+  MoreVertical,
+  Paperclip,
+  Smile,
+  Mic,
   Send,
+  Users,
+  Star,
+  Check,
+  CheckCheck,
+  MessageSquarePlus,
 } from 'lucide-react';
 
-const SUB_SPACES = [
-  { name: 'Cognitive Load', color: '#6366F1' },
-  { name: 'Safety Protocols', color: '#0D9488' },
-];
-
-const DISCUSSIONS = [
+const CHATS = [
   {
-    author: 'Dr. Aris Thorne',
-    time: '12m ago',
-    text: 'Is anyone else seeing unexpected latency in the L4-B sensory feedback loop?',
-    replies: 8,
+    id: 1,
+    name: 'Quantum Ethics',
+    color: '#6366F1',
+    initials: 'QE',
+    lastMessage: 'Dr. Vane: I think we need to review the latest submission on neuro-rights.',
+    time: '10:42 AM',
+    members: '1.2k',
+    rating: 4.8,
+    status: 'active',
+    unread: 3,
   },
   {
-    author: 'Julian D.',
-    time: '1h ago',
-    text: "Added the new synaptic mapping markers to the shared library. Use 'Marker_Set_v2'.",
-    replies: 2,
+    id: 2,
+    name: 'Algorithmic Commons',
+    color: '#10B981',
+    initials: 'AC',
+    lastMessage: 'Sarah: Agreed. The dataset is already normalized and ready for the next phase.',
+    time: 'Yesterday',
+    members: '840',
+    rating: 4.5,
+    status: 'active',
+    unread: 0,
+  },
+  {
+    id: 3,
+    name: 'Data Sovereignty Lab',
+    color: '#F59E0B',
+    initials: 'DS',
+    lastMessage: 'System: Space has been archived by the lead curator.',
+    time: 'Tuesday',
+    members: '450',
+    rating: 4.2,
+    status: 'closed',
+    unread: 0,
+  },
+  {
+    id: 4,
+    name: 'Meta-Learning Horizons',
+    color: '#EC4899',
+    initials: 'ML',
+    lastMessage: 'Marcus: Did anyone catch the keynote on zero-shot generalization?',
+    time: '04/12/2026',
+    members: '2.1k',
+    rating: 4.9,
+    status: 'active',
+    unread: 0,
   },
 ];
 
 export default function JoinedSpacesPage() {
   return (
-    <div className={styles.page}>
-      <div className={styles.main}>
-        {/* Space Header */}
-        <div className={styles.spaceHeader}>
-          <span className={styles.spaceBadge}>🔬 Active Research Space</span>
-          <h1 className={styles.spaceTitle}>
-            Advanced Neural Interfacing<br />
-            &amp; Synaptic Ethics{' '}
-            <span className={styles.spaceCode}>L-04</span>
-          </h1>
-          <div className={styles.curators}>
-            <div className={styles.curatorStack}>
-              <div className={styles.curatorAvatar} />
-              <div className={styles.curatorAvatar} />
-              <div className={styles.curatorAvatar} />
-              <span className={styles.curatorMore}>+12</span>
-            </div>
-            <span className={styles.curatorText}>
-              8 Active Curators working now
-            </span>
-          </div>
+    <div className={styles.chatContainer}>
+      {/* LEFT SIDEBAR - CHAT LIST */}
+      <aside className={styles.chatSidebar}>
+        <div className={styles.sidebarHeader}>
+          <h2 className={styles.sidebarTitle}>Your Spaces</h2>
+          <button className={styles.iconBtn}>
+            <MoreVertical size={20} />
+          </button>
         </div>
 
-        {/* Canvas + Resources Row */}
-        <div className={styles.workArea}>
-          <div className={styles.canvas}>
-            <div className={styles.canvasHeader}>
-              <h2 className={styles.canvasTitle}>
-                <em>Collaborative Canvas</em>
-              </h2>
-              <button className={styles.canvasExpand}>
-                <Expand size={16} />
-              </button>
-            </div>
-            <p className={styles.canvasDesc}>
-              Visual mapping for Phase 2 data flow
-            </p>
-            <div className={styles.canvasPlaceholder}>
-              <Activity size={28} />
-              <span>Workspace Active: Click to annotate</span>
-            </div>
-          </div>
-
-          <div className={styles.resources}>
-            <h3 className={styles.resourcesTitle}>📦 RESOURCES</h3>
-            <div className={styles.resourceCard}>
-              <span className={styles.resourceType}>DATASET</span>
-              <strong>Neural_Pathway_v</strong>
-              <p className={styles.resourceMeta}>
-                Updated 2h ago by Sarah K.
-              </p>
-            </div>
-            <button className={styles.uploadBtn}>
-              <Upload size={14} />
-              Upload Data
-            </button>
-          </div>
+        <div className={styles.searchBar}>
+          <Search size={16} className={styles.searchIcon} />
+          <input
+            type="text"
+            placeholder="Search or start new chat"
+            className={styles.searchInput}
+          />
         </div>
 
-        {/* Document Preview */}
-        <div className={styles.document}>
-          <div className={styles.docHeader}>
-            <span className={styles.docIcon}>📄</span>
-            <em className={styles.docTitle}>
-              The Synaptic Ethics Manifesto (Draft)
-            </em>
-            <span className={styles.collabDot} />
-            <span className={styles.collabText}>Collaborative Mode: ON</span>
-          </div>
-          <div className={styles.docBody}>
-            <h2>Abstract: Defining the Neutral Ground</h2>
-            <p>
-              As we approach the integration of high-fidelity neural interfaces,
-              the primary concern remains not the hardware&apos;s capacity for
-              transmission, but the{' '}
-              <mark className={styles.highlight}>
-                ethical boundaries of synaptic autonomy
-              </mark>
-              . This research aims to define the &quot;Digital Curator&quot;
-              mandate for human-computer interaction...
-            </p>
-            <p>
-              Our Laboratory&apos;s primary hypothesis states that the
-              introduction of tertiary-tier logic gates into the prefrontal
-              cortex will require a...
-            </p>
-          </div>
-        </div>
-
-        {/* Active Laboratory Footer */}
-        <div className={styles.labFooter}>
-          <h4 className={styles.labLabel}>ACTIVE LABORATORY</h4>
-          <div className={styles.labItem}>
-            <span className={styles.labDot} style={{ background: '#0D9488' }} />
-            Quantum Ethics
-          </div>
-          <div className={styles.labItem}>
-            <span className={styles.labDot} style={{ background: '#6366F1' }} />
-            Bio-Sensing L4
-          </div>
-        </div>
-      </div>
-
-      {/* Right Sidebar */}
-      <aside className={styles.sidebar}>
-        <div className={styles.widget}>
-          <h3 className={styles.widgetTitle}>LABORATORY SUB-SPACES</h3>
-          {SUB_SPACES.map((sp) => (
-            <div key={sp.name} className={styles.subSpaceItem}>
-              <div
-                className={styles.subSpaceDot}
-                style={{ background: sp.color }}
-              />
-              <span>{sp.name}</span>
-              <ChevronRight size={14} className={styles.chevron} />
-            </div>
-          ))}
-        </div>
-
-        <div className={styles.widget}>
-          <div className={styles.widgetHeader}>
-            <h3 className={styles.widgetTitle}>ACTIVE DISCUSSION</h3>
-            <a href="#" className={styles.viewAllLink}>View All</a>
-          </div>
-          {DISCUSSIONS.map((d, i) => (
-            <div key={i} className={styles.discussionItem}>
-              <div className={styles.discussionHeader}>
-                <span className={styles.discussionAvatar}>
-                  {d.author.split(' ').map(w => w[0]).join('')}
-                </span>
-                <strong>{d.author}</strong>
-                <span className={styles.discussionTime}>{d.time}</span>
+        <div className={styles.chatList}>
+          {CHATS.map((chat) => (
+            <div
+              key={chat.id}
+              className={`${styles.chatItem} ${chat.id === 1 ? styles.activeChat : ''}`}
+            >
+              <div className={styles.avatarWrapper}>
+                <div
+                  className={styles.chatAvatar}
+                  style={{ background: chat.color }}
+                >
+                  {chat.initials}
+                </div>
+                <div
+                  className={`${styles.statusDot} ${
+                    chat.status === 'active' ? styles.statusActive : styles.statusClosed
+                  }`}
+                  title={`Space is ${chat.status}`}
+                />
               </div>
-              <p className={styles.discussionText}>{d.text}</p>
-              <div className={styles.discussionActions}>
-                <span><MessageSquare size={12} /> {d.replies} Replies</span>
-                <span><Bookmark size={12} /> Save</span>
+
+              <div className={styles.chatInfo}>
+                <div className={styles.chatHeader}>
+                  <h3 className={styles.chatName}>{chat.name}</h3>
+                  <span className={styles.chatTime}>{chat.time}</span>
+                </div>
+
+                <div className={styles.chatMetaRow}>
+                  <div className={styles.chatMeta}>
+                    <span className={styles.metaItem}>
+                      <Users size={12} /> {chat.members}
+                    </span>
+                    <span className={styles.metaItem}>
+                      <Star size={12} className={styles.starIcon} /> {chat.rating}
+                    </span>
+                  </div>
+                  {chat.unread > 0 && (
+                    <span className={styles.unreadBadge}>{chat.unread}</span>
+                  )}
+                </div>
+
+                <p className={styles.lastMessage}>
+                  {chat.id !== 1 && chat.status !== 'closed' && (
+                    <CheckCheck size={14} className={styles.readIcon} />
+                  )}
+                  {chat.lastMessage}
+                </p>
               </div>
             </div>
           ))}
-          <div className={styles.threadInput}>
-            <input
-              type="text"
-              placeholder="Start a new thread..."
-              className={styles.threadInputField}
-            />
-            <button className={styles.threadSendBtn}>
-              <Send size={14} />
-            </button>
-          </div>
         </div>
 
-        <div className={styles.healthWidget}>
-          <h3 className={styles.healthTitle}>Laboratory Health</h3>
-          <div className={styles.healthStats}>
-            <div>
-              <span className={styles.healthValue}>94%</span>
-              <span className={styles.healthLabel}>REVIEW SYNC</span>
-            </div>
-            <div>
-              <span className={styles.healthValue}>3.4k</span>
-              <span className={styles.healthLabel}>DATA POINTS</span>
-            </div>
-          </div>
-        </div>
+        {/* Floating Action Button */}
+        <button className={styles.fabBtn} aria-label="Create New Space">
+          <MessageSquarePlus size={24} />
+        </button>
       </aside>
+
+      {/* RIGHT SIDE - ACTIVE CHAT */}
+      <main className={styles.chatWindow}>
+        {/* Chat Header */}
+        <header className={styles.windowHeader}>
+          <div className={styles.activeHeaderInfo}>
+            <div
+              className={styles.chatAvatar}
+              style={{ background: '#6366F1' }}
+            >
+              QE
+            </div>
+            <div>
+              <h2 className={styles.windowTitle}>Quantum Ethics</h2>
+              <span className={styles.windowSubtitle}>
+                1.2k members, 43 online
+              </span>
+            </div>
+          </div>
+          <div className={styles.headerActions}>
+            <button className={styles.iconBtn}><Search size={20} /></button>
+            <button className={styles.iconBtn}><MoreVertical size={20} /></button>
+          </div>
+        </header>
+
+        {/* Chat Messages Area */}
+        <div className={styles.messagesArea}>
+          <div className={styles.dateDivider}>
+            <span>Today</span>
+          </div>
+
+          <div className={`${styles.messageBubble} ${styles.messageReceived}`}>
+            <span className={styles.messageSender}>Elena K.</span>
+            <div className={styles.messageContent}>
+              I've uploaded the new parameters for the entanglement simulation. 
+              We should see less decoherence in the edge cases.
+            </div>
+            <span className={styles.messageTime}>10:15 AM</span>
+          </div>
+
+          <div className={`${styles.messageBubble} ${styles.messageReceived}`}>
+            <span className={styles.messageSender}>Marcus W.</span>
+            <div className={styles.messageContent}>
+              Looks solid. Though I am slightly concerned about the ethical implications of the observer effect in this specific model. Have we run a baseline ethics check?
+            </div>
+            <span className={styles.messageTime}>10:22 AM</span>
+          </div>
+
+          <div className={`${styles.messageBubble} ${styles.messageSent}`}>
+            <div className={styles.messageContent}>
+              I can run the baseline check this afternoon. I'll use the Stanford framework as a reference point.
+            </div>
+            <div className={styles.messageStatus}>
+              <span className={styles.messageTime}>10:30 AM</span>
+              <CheckCheck size={14} className={styles.readIconInfo} />
+            </div>
+          </div>
+
+          <div className={`${styles.messageBubble} ${styles.messageReceived}`}>
+            <span className={styles.messageSender}>Dr. Vane</span>
+            <div className={styles.messageContent}>
+              I think we need to review the latest submission on neuro-rights before we finalize the baseline. Let's discuss in the sync later.
+            </div>
+            <span className={styles.messageTime}>10:42 AM</span>
+          </div>
+        </div>
+
+        {/* Chat Input */}
+        <footer className={styles.chatInputArea}>
+          <button className={styles.iconBtn}><Smile size={24} /></button>
+          <button className={styles.iconBtn}><Paperclip size={24} /></button>
+          
+          <input
+            type="text"
+            placeholder="Type a message..."
+            className={styles.messageInput}
+          />
+          
+          <button className={styles.iconBtn}><Mic size={24} /></button>
+          <button className={styles.sendBtn}><Send size={18} /></button>
+        </footer>
+      </main>
     </div>
   );
 }

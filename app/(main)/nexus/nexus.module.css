@@ -16,6 +16,23 @@
   gap: 1rem;
 }
 
+/* Page Header */
+.pageHeader {
+  margin-bottom: 0.5rem;
+}
+
+.pageTitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.pageSubtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
 /* Composer */
 .composer {
   background: var(--bg-surface);
