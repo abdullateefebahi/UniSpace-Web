@@ -37,6 +37,34 @@
   --transition: all 0.2s ease;
 }
 
+[data-theme='dark'] {
+  /* Brand Colors (Keep teal/gold punchy, soften navy for text if needed) */
+  --navy: #4A6BAA; /* Lighter navy for visibility on dark */
+  --navy-light: #6A8BCA;
+  --navy-dark: #2A457A;
+  --teal: #14B8A6;
+  --teal-light: #2DD4BF;
+  --teal-dark: #0D9488;
+  --gold: #FCD34D;
+
+  /* Surface & Background */
+  --bg-primary: #000000;
+  --bg-surface: #121212;
+  --bg-sidebar: #0A0A0A;
+
+  /* Text */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+
+  /* Borders & Shadows */
+  --border: #27272A;
+  --border-light: #18181B;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.8);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.9);
+}
+
 /* ===== Reset ===== */
 
 *,
